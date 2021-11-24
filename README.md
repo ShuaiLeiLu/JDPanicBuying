@@ -89,14 +89,14 @@
 安装：
 
 ```sh
-pip install -r pack_requirements.txt
+pip install -r requirements.txt
 ```
 
 Tips:
 >
 > 如果国内安装第三方库比较慢，可以使用以下指令进行清华源加速：
 > ```sh
-> pip install -r pack_requirements.txt -i https://pypi.tuna.tsinghua.edu.cn/simple/
+> pip install -r requirements.txt -i https://pypi.tuna.tsinghua.edu.cn/simple/
 > ```
 >
 > 如果安装错误也可尝试
