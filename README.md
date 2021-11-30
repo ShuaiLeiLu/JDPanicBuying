@@ -115,6 +115,12 @@ Tips:
 python3 runserver.py
 ```
 
+> **注意**：Windows环境下没有反应的话可以尝试
+>
+> ```shell
+> python runserver.py    # Python环境问题所致
+> ```
+
 5. 浏览器打开 http://localhost:12021/
 
 ### *命令行* - 使用教程
@@ -163,6 +169,14 @@ python3 runserver.py
 ```sh
 python3 main.py
 ```
+
+> **注意**：Windows环境下没有反应可以尝试
+>
+> ```shell
+> python main.py    # Python环境问题所致
+> ```
+
+
 
 根据提示选择相应功能即可
 
