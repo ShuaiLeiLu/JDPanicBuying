@@ -14,7 +14,7 @@ from Logger.logger import logger
 from Core.login import SpiderSession, QrLogin
 from Message.message import sendMessage
 from Core.timer import Timer
-from Core.util import parse_json
+from Core.util import get_random_useragent, parse_json
 
 
 class Waiter():
@@ -248,7 +248,7 @@ class Waiter():
             '_': str(int(time.time() * 1000)),
         }
         headers = {
-            'User-Agent': self.user_agent,
+            'User-Agent': get_random_useragent(),
             'Referer': 'https://item.jd.com/{}.html'.format(sku_id),
         }
 
