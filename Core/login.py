@@ -82,7 +82,7 @@ class SpiderSession:
         :param cookie_file_name: 存放Cookie的文件名称
         :return:
         """
-        cookies_file = '{}{}.cookies'.format(self.cookies_dir_path, cookie_file_name)
+        cookies_file = '{}{}.cookies'.format(self.cookies_dir_path, cookie_file_name[:2])
         directory = os.path.dirname(cookies_file)
         if not os.path.exists(directory):
             os.makedirs(directory)
