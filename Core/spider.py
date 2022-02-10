@@ -700,7 +700,7 @@ class Waiter():
                 self.change_item_num_in_cart(
                     sku_id=sku_id,
                     vender_id=cart_item.get('vender_id'),
-                    num=self.skuids,
+                    num=self.count,
                     p_type=cart_item.get('p_type'),
                     target_id=cart_item.get('target_id'),
                     promo_id=cart_item.get('promo_id')
