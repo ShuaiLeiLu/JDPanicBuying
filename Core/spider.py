@@ -197,15 +197,6 @@ class Waiter():
             print('库存状态：{}(无现货)'.format(jsparser['StockStateName']))
             return False
 
-    def _get_item_detail_page(self, sku_id):
-        """访问商品详情页
-        :param sku_id: 商品id
-        :return: 响应
-        """
-        url = 'https://item.jd.com/{}.html'.format(sku_id)
-        page = requests.get(url=url, headers=self.headers)
-        return page
-
     def _waitForSell(self):
         area_id = self.area
         sku_id = self.skuids
@@ -709,7 +700,7 @@ class Waiter():
                 self.change_item_num_in_cart(
                     sku_id=sku_id,
                     vender_id=cart_item.get('vender_id'),
-                    num=self.skuids,
+                    num=self.count,
                     p_type=cart_item.get('p_type'),
                     target_id=cart_item.get('target_id'),
                     promo_id=cart_item.get('promo_id')
