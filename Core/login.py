@@ -136,15 +136,6 @@ class QrLogin:
             logger.error("验证cookies是否有效发生异常", e)
         return False
 
-    def _get_login_page(self):
-        """
-        获取PC端登录页面
-        :return:
-        """
-        url = "https://passport.jd.com/new/login.aspx"
-        page = self.session.get(url, headers=self.spider_session.get_headers())
-        return page
-
     def _get_qrcode(self):
         """
         缓存并展示登录二维码
@@ -229,7 +220,6 @@ class QrLogin:
         二维码登陆
         :return:
         """
-        self._get_login_page()
 
         # download QR code
         if not self._get_qrcode():
