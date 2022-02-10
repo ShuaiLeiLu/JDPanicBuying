@@ -130,7 +130,7 @@ python3 runserver.py
 > 随便找一个商品下单，然后进入结算页面，打开浏览器的调试窗口，切换到控制台Tab页，在控制台中输入变量`_JdTdudfp`，即可从输出的Json中获取`eid`和`fp`。  
 > 不会的话参考作者3的👉 [使用教程请参看Wiki](https://github.com/tychxn/jd-assistant/wiki/1.-%E4%BA%AC%E4%B8%9C%E6%8A%A2%E8%B4%AD%E5%8A%A9%E6%89%8B%E7%94%A8%E6%B3%95)
 
-> *不会的同学也可以打开目录下的get_eid_fp.html文件，不过有概率失败*
+> *不会的同学也可以打开`TEST`目录下的`get_eid_fp.html`文件，不过有概率失败*
 
 
 (2)`sku_id`,`DEFAULT_USER_AGENT`
