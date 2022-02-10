@@ -50,10 +50,12 @@
 - 更新readme自行打包方法
 
 ### v1.1.1
+
 感谢 [@laodiaoyadashu](https://github.com/laodiaoyadashu) 与 [@YuTao0310](https://github.com/YuTao0310) 对本项目的贡献
 
 - 修复有货商品一直提示等待上架
 - 修复用户名太长时，cookie不能正确创建
+- 去除无用函数，修复错误函数参数
 
 ### 即将到来
 - 上线价格低于设定值自动下单功能
