@@ -73,6 +73,7 @@
 1. 到release界面下载jd-shopper.zip包
 2. 解压后在jd-shopper目录找到jd-shopper.exe文件
 3. 点击运行，或者右键生成快捷方式后运行
+> 提示：如果打开后界面空白，可以尝试在浏览器打开[http://localhost:12021/](http://localhost:12021/)
 
 ### 通过 *源代码* 运行
 
