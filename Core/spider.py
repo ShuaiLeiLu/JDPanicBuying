@@ -36,9 +36,11 @@ class Waiter():
                      "Spider", "timeout")),
                  stock_provider=config.settings(
                      "Spider", "stock_provider") or "page",
-                 date=config.settings('Spider', 'buy_time').__str__()
+                 date=config.settings('Spider', 'buy_time').__str__(),
+                 submit_order=False,
+                 **kwargs
                  ):
-
+        self.submit_order = submit_order
         self.skuids = skuids
         self.area = area
         self.eid = eid
@@ -284,7 +286,7 @@ class Waiter():
         self.status = "waiting"
         self.last_message = "正在等待设定时间"
         self.timers = Timer(self.buyTime)
-        self.timers.start()
+        self.timers.start(self)
         self.status = "running"
         self.last_message = "正在定时检查库存"
         for count in range(int(self.retry)):
@@ -321,7 +323,7 @@ class Waiter():
         self.status = "waiting"
         self.last_message = "正在等待设定时间"
         self.timers = Timer(self.buyTime)
-        self.timers.start()
+        self.timers.start(self)
         if self.stop_requested:
             self.status = "stopped"
             self.last_message = "定时下单已停止"

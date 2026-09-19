@@ -18,7 +18,16 @@ class Timer(object):
         #    localtime.tm_year.__str__() + '-' + localtime.tm_mon.__str__() + '-' + localtime.tm_mday.__str__()
         #    + ' ' + buy_time_everyday,
         #    "%Y-%m-%d %H:%M:%S.%f")
-        self.buy_time = datetime.strptime(buy_time_everyday, "%Y-%m-%d %H:%M:%S.%f")
+        
+        # 这里修复了缩进，使其包含在 __init__ 方法内部
+        try:
+            self.buy_time = datetime.strptime(buy_time_everyday, "%Y-%m-%d %H:%M:%S.%f")
+        except ValueError:
+            try:
+                self.buy_time = datetime.strptime(buy_time_everyday, "%Y-%m-%d %H:%M:%S")
+            except ValueError:
+                self.buy_time = datetime.strptime(buy_time_everyday, "%Y-%m-%d %H:%M")
+        
         self.buy_time_ms = int(time.mktime(self.buy_time.timetuple()) * 1000.0 + self.buy_time.microsecond / 1000)
         self.sleep_interval = sleep_interval
 
@@ -55,11 +64,16 @@ class Timer(object):
         """
         return self.local_time() - self.jd_time()
 
-    def start(self):
+    def start(self, waiter=None):
         logger.info('正在等待到达设定时间:{}'.format(self.buy_time))
         logger.info('本地时间与参考时间误差为【{}】毫秒'.format(self.diff_time))
 
         while True:
+            # 新增：每次循环检测是否在工作台上按下了停止按钮
+            if waiter and getattr(waiter, 'stop_requested', False):
+                logger.info('任务已被手动停止，结束等待')
+                break
+
             # 本地时间减去与京东的时间差，能够将时间误差提升到0.1秒附近
             # 具体精度依赖获取京东服务器时间的网络时间损耗
             if self.local_time() - self.diff_time >= self.buy_time_ms:
@@ -67,4 +81,3 @@ class Timer(object):
                 break
             else:
                 time.sleep(self.sleep_interval)
-
